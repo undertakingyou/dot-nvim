@@ -198,6 +198,28 @@ vim.keymap.set('n', '<leader>w/', '<C-w>v', { desc = 'Create a vertical split' }
 vim.keymap.set('n', '<leader>w-', '<C-w>s', { desc = 'Create a horizontal split' })
 vim.keymap.set('n', '<leader>wc', '<C-w>c', { desc = 'Close the [c]urrent split' })
 vim.keymap.set('n', '<leader>w=', '<C-w>=', { desc = 'Make all windows (almost) equal' })
+vim.keymap.set('n', '<leader>w1', ':1wincmd w<cr>', { desc = 'Quick switch to [w]indow [1]', silent = true })
+vim.keymap.set('n', '<leader>w2', ':2wincmd w<cr>', { desc = 'Quick switch to [w]indow [2]', silent = true })
+vim.keymap.set('n', '<leader>w3', ':3wincmd w<cr>', { desc = 'Quick switch to [w]indow [3]', silent = true })
+vim.keymap.set('n', '<leader>w4', ':4wincmd w<cr>', { desc = 'Quick switch to [w]indow [4]', silent = true })
+vim.keymap.set('n', '<leader>w5', ':5wincmd w<cr>', { desc = 'Quick switch to [w]indow [5]', silent = true })
+vim.keymap.set('n', '<leader>w6', ':6wincmd w<cr>', { desc = 'Quick switch to [w]indow [6]', silent = true })
+vim.keymap.set('n', '<leader>w7', ':7wincmd w<cr>', { desc = 'Quick switch to [w]indow [7]', silent = true })
+vim.keymap.set('n', '<leader>w8', ':8wincmd w<cr>', { desc = 'Quick switch to [w]indow [8]', silent = true })
+vim.keymap.set('n', '<leader>w9', ':9wincmd w<cr>', { desc = 'Quick switch to [w]indow [9]', silent = true })
+vim.keymap.set('n', '<leader>wC1', ':1wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [1]', silent = true })
+vim.keymap.set('n', '<leader>wC2', ':2wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [2]', silent = true })
+vim.keymap.set('n', '<leader>wC3', ':3wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [3]', silent = true })
+vim.keymap.set('n', '<leader>wC4', ':4wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [4]', silent = true })
+vim.keymap.set('n', '<leader>wC5', ':5wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [5]', silent = true })
+vim.keymap.set('n', '<leader>wC6', ':6wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [6]', silent = true })
+vim.keymap.set('n', '<leader>wC7', ':7wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [7]', silent = true })
+vim.keymap.set('n', '<leader>wC8', ':8wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [8]', silent = true })
+vim.keymap.set('n', '<leader>wC9', ':9wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [9]', silent = true })
+
+-- File navigation
+-- Quickly get to NetRW until I can figure out a better way to do this. I used to use CtrlSF
+vim.keymap.set('n', '-', vim.cmd.Ex)
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -924,6 +946,11 @@ require('lazy').setup({
     --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+  },
+  {
+    'pmizio/typescript-tools.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+    opts = {},
   },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
