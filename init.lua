@@ -84,6 +84,14 @@ I hope you enjoy your Neovim journey,
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 
+-- Change some settings just for use with vscode. This will enable us to do things with the vscode-neovim plugin
+if vim.g.vscode then
+  --- Do my thing here
+  require 'nvim-vscode.keymap'
+else
+  -- Ordinary vim
+
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -109,11 +117,6 @@ vim.opt.mouse = 'a'
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
-
--- Tabstops
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
@@ -194,47 +197,47 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 --  Use CTRL+<hjkl> to switch between windows
 --
 --  See `:help wincmd` for a list of all window commands
--- vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
--- vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
--- vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
--- vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
--- These are some of my personal favorite window mappings. Enough so that I have missed them in VS Code
-vim.keymap.set('n', '<leader>wh', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<leader>wl', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<leader>wj', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<leader>wk', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-vim.keymap.set('n', '<leader>w/', '<C-w>v', { desc = 'Create a vertical split' })
-vim.keymap.set('n', '<leader>w-', '<C-w>s', { desc = 'Create a horizontal split' })
-vim.keymap.set('n', '<leader>wc', '<C-w>c', { desc = 'Close the [c]urrent split' })
-vim.keymap.set('n', '<leader>w=', '<C-w>=', { desc = 'Make all windows (almost) equal' })
-vim.keymap.set('n', '<leader>w1', ':1wincmd w<cr>', { desc = 'Quick switch to [w]indow [1]', silent = true })
-vim.keymap.set('n', '<leader>w2', ':2wincmd w<cr>', { desc = 'Quick switch to [w]indow [2]', silent = true })
-vim.keymap.set('n', '<leader>w3', ':3wincmd w<cr>', { desc = 'Quick switch to [w]indow [3]', silent = true })
-vim.keymap.set('n', '<leader>w4', ':4wincmd w<cr>', { desc = 'Quick switch to [w]indow [4]', silent = true })
-vim.keymap.set('n', '<leader>w5', ':5wincmd w<cr>', { desc = 'Quick switch to [w]indow [5]', silent = true })
-vim.keymap.set('n', '<leader>w6', ':6wincmd w<cr>', { desc = 'Quick switch to [w]indow [6]', silent = true })
-vim.keymap.set('n', '<leader>w7', ':7wincmd w<cr>', { desc = 'Quick switch to [w]indow [7]', silent = true })
-vim.keymap.set('n', '<leader>w8', ':8wincmd w<cr>', { desc = 'Quick switch to [w]indow [8]', silent = true })
-vim.keymap.set('n', '<leader>w9', ':9wincmd w<cr>', { desc = 'Quick switch to [w]indow [9]', silent = true })
-vim.keymap.set('n', '<leader>wC1', ':1wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [1]', silent = true })
-vim.keymap.set('n', '<leader>wC2', ':2wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [2]', silent = true })
-vim.keymap.set('n', '<leader>wC3', ':3wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [3]', silent = true })
-vim.keymap.set('n', '<leader>wC4', ':4wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [4]', silent = true })
-vim.keymap.set('n', '<leader>wC5', ':5wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [5]', silent = true })
-vim.keymap.set('n', '<leader>wC6', ':6wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [6]', silent = true })
-vim.keymap.set('n', '<leader>wC7', ':7wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [7]', silent = true })
-vim.keymap.set('n', '<leader>wC8', ':8wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [8]', silent = true })
-vim.keymap.set('n', '<leader>wC9', ':9wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [9]', silent = true })
-
--- File navigation
--- Quickly get to NetRW until I can figure out a better way to do this. I used to use CtrlSF
-vim.keymap.set('n', '-', vim.cmd.Ex)
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- NOTE: Some terminals have coliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+-- These are some of my personal favorite window mappings. Enough so that I have missed them in VS Code
+  vim.keymap.set('n', '<leader>wh', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+  vim.keymap.set('n', '<leader>wl', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+  vim.keymap.set('n', '<leader>wj', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+  vim.keymap.set('n', '<leader>wk', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+  vim.keymap.set('n', '<leader>w/', '<C-w>v', { desc = 'Create a vertical split' })
+  vim.keymap.set('n', '<leader>w-', '<C-w>s', { desc = 'Create a horizontal split' })
+  vim.keymap.set('n', '<leader>wc', '<C-w>c', { desc = 'Close the [c]urrent split' })
+  vim.keymap.set('n', '<leader>w=', '<C-w>=', { desc = 'Make all windows (almost) equal' })
+  vim.keymap.set('n', '<leader>w1', ':1wincmd w<cr>', { desc = 'Quick switch to [w]indow [1]', silent = true })
+  vim.keymap.set('n', '<leader>w2', ':2wincmd w<cr>', { desc = 'Quick switch to [w]indow [2]', silent = true })
+  vim.keymap.set('n', '<leader>w3', ':3wincmd w<cr>', { desc = 'Quick switch to [w]indow [3]', silent = true })
+  vim.keymap.set('n', '<leader>w4', ':4wincmd w<cr>', { desc = 'Quick switch to [w]indow [4]', silent = true })
+  vim.keymap.set('n', '<leader>w5', ':5wincmd w<cr>', { desc = 'Quick switch to [w]indow [5]', silent = true })
+  vim.keymap.set('n', '<leader>w6', ':6wincmd w<cr>', { desc = 'Quick switch to [w]indow [6]', silent = true })
+  vim.keymap.set('n', '<leader>w7', ':7wincmd w<cr>', { desc = 'Quick switch to [w]indow [7]', silent = true })
+  vim.keymap.set('n', '<leader>w8', ':8wincmd w<cr>', { desc = 'Quick switch to [w]indow [8]', silent = true })
+  vim.keymap.set('n', '<leader>w9', ':9wincmd w<cr>', { desc = 'Quick switch to [w]indow [9]', silent = true })
+  vim.keymap.set('n', '<leader>wC1', ':1wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [1]', silent = true })
+  vim.keymap.set('n', '<leader>wC2', ':2wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [2]', silent = true })
+  vim.keymap.set('n', '<leader>wC3', ':3wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [3]', silent = true })
+  vim.keymap.set('n', '<leader>wC4', ':4wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [4]', silent = true })
+  vim.keymap.set('n', '<leader>wC5', ':5wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [5]', silent = true })
+  vim.keymap.set('n', '<leader>wC6', ':6wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [6]', silent = true })
+  vim.keymap.set('n', '<leader>wC7', ':7wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [7]', silent = true })
+  vim.keymap.set('n', '<leader>wC8', ':8wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [8]', silent = true })
+  vim.keymap.set('n', '<leader>wC9', ':9wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [9]', silent = true })
+
+  -- File navigation
+  -- Quickly get to NetRW until I can figure out a better way to do this. I used to use CtrlSF
+  vim.keymap.set('n', '-', vim.cmd.Ex)
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -707,7 +710,7 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         -- gopls = {},
-        pyright = {},
+        -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -806,7 +809,7 @@ require('lazy').setup({
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        -- javascript = { "prettierd", "prettier", stop_after_first = true },
       },
     },
   },
@@ -987,15 +990,6 @@ require('lazy').setup({
         return '%2l:%-2v'
       end
 
-      -- I like auto pairs
-      require('mini.pairs').setup()
-
-      -- Interesting split and joins for functions
-      require('mini.splitjoin').setup()
-
-      -- Nicer starter window
-      require('mini.starter').setup()
-
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
@@ -1024,15 +1018,6 @@ require('lazy').setup({
     --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-  },
-  {
-    'pmizio/typescript-tools.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-    opts = {
-      baseIndentSize = 4,
-      indentSive = 4,
-      tabSize = 4,
-    },
   },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
@@ -1085,3 +1070,4 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+end
