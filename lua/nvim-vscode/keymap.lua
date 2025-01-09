@@ -118,6 +118,21 @@ keymap({ 'n', 'v' }, 'zo', "<cmd>lua require('vscode').action('editor.unfold')<c
 keymap({ 'n', 'v' }, 'zO', "<cmd>lua require('vscode').action('editor.unfoldRecursively')<cr>")
 keymap({ 'n', 'v' }, 'za', "<cmd>lua require('vscode').action('editor.toggleFold')<cr>")
 
+local function moveCursor(direction)
+  if vim.v.count == 0 and vim.fn.reg_recording() == '' and vim.fn.reg_executing() == '' then
+    return ('g' .. direction)
+  else
+    return direction
+  end
+end
+
+keymap({ 'n', 'v' }, 'k', function()
+  return moveCursor 'k'
+end, { expr = true, remap = true })
+keymap({ 'n', 'v' }, 'j', function()
+  return moveCursor 'j'
+end, { expr = true, remap = true })
+
 -- Coding actions
 keymap('n', '<leader>ss', "<cmd>lua require('vscode').action('workbench.action.gotoSymbol')<cr>")
 keymap({ 'n', 'v' }, 'gc', "<cmd>lua require('vscode').action('editor.action.commentLine')<cr>")
