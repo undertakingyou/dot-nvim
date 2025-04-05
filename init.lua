@@ -115,7 +115,7 @@ else
 
   -- Don't show the mode, since it's already in the status line
   vim.opt.showmode = false
-  
+
   -- Tabstops
   vim.opt.tabstop = 4
   vim.opt.shiftwidth = 4
@@ -1059,6 +1059,13 @@ else
         indentSive = 4,
         tabSize = 4,
       },
+    },
+    {
+      'windwp/nvim-ts-autotag',
+      opts = {},
+    },
+    {
+      'tpope/vim-fugitive',
     },
 
     -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
