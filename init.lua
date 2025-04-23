@@ -1001,17 +1001,17 @@ else
         -- Simple and easy statusline.
         --  You could remove this setup call if you don't like it,
         --  and try some other statusline plugin
-        local statusline = require 'mini.statusline'
-        -- set use_icons to true if you have a Nerd Font
-        statusline.setup { use_icons = vim.g.have_nerd_font }
-
-        -- You can configure sections in the statusline by overriding their
-        -- default behavior. For example, here we set the section for
-        -- cursor location to LINE:COLUMN
-        ---@diagnostic disable-next-line: duplicate-set-field
-        statusline.section_location = function()
-          return '%2l:%-2v'
-        end
+        -- local statusline = require 'mini.statusline'
+        -- -- set use_icons to true if you have a Nerd Font
+        -- statusline.setup { use_icons = vim.g.have_nerd_font }
+        --
+        -- -- You can configure sections in the statusline by overriding their
+        -- -- default behavior. For example, here we set the section for
+        -- -- cursor location to LINE:COLUMN
+        -- ---@diagnostic disable-next-line: duplicate-set-field
+        -- statusline.section_location = function()
+        --   return '%2l:%-2v'
+        -- end
 
         -- I like auto pairs
         require('mini.pairs').setup()
@@ -1066,6 +1066,36 @@ else
     },
     {
       'tpope/vim-fugitive',
+    },
+    {
+      'nvim-lualine/lualine.nvim',
+      dependencies = {
+        'nvim-tree/nvim-web-devicons',
+        opt = true,
+      },
+      config = function()
+        require('lualine').setup {
+          options = {
+            icons_enabled = true,
+            theme = 'auto',
+          },
+          sections = {
+            lualine_x = {
+              { 'filetype', separator = { right = nil, left = nil } },
+              { 'fileformat', separator = { right = nil, left = nil } },
+              { 'encoding', separator = { right = nil, left = nil } },
+            },
+          },
+          inactive_sections = {
+            lualine_a = { 'filename' },
+            lualine_b = {},
+            lualine_c = {},
+            lualine_x = {},
+            lualine_y = {},
+            lualine_z = { 'location' },
+          },
+        }
+      end,
     },
 
     -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
