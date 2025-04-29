@@ -293,6 +293,7 @@ else
     require 'plugins.typescript-tools', -- Typescript
     { 'windwp/nvim-ts-autotag', opts = {} }, -- Multiple languages close tags
     require 'plugins.avante', -- AI completions
+    require 'plugins.markdown', -- Markdown pretty rendering
 
     -- The following plugins come from the kickstarter project
     -- require 'kickstart.plugins.debug',
