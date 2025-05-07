@@ -188,8 +188,7 @@ else
   vim.keymap.set('n', '<leader>wC9', ':9wincmd w<cr>', { desc = 'Quick [c]lose [w]indow [9]', silent = true })
 
   -- File navigation
-  -- Quickly get to NetRW until I can figure out a better way to do this. I used to use CtrlSF
-  vim.keymap.set('n', '-', vim.cmd.Ex)
+  vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
   -- [[ Basic Autocommands ]]
   --  See `:help lua-guide-autocommands`
@@ -267,6 +266,7 @@ else
     'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
     require 'plugins.whichkey', -- Useful plugin to show you pending keybinds.
     require 'plugins.telescope', -- Fuzzy Finder (files, lsp, etc)
+    require 'plugins.oil', -- Replace netrw
 
     -- LSP Plugins
     require 'plugins.lazydev', -- `lazydev` configures Lua LSP for your Neovim config.
@@ -296,7 +296,7 @@ else
     require 'plugins.markdown', -- Markdown pretty rendering
 
     -- The following plugins come from the kickstarter project
-    -- require 'kickstart.plugins.debug',
+    require 'kickstart.plugins.debug',
     require 'kickstart.plugins.indent_line',
     -- require 'kickstart.plugins.lint',
     require 'kickstart.plugins.autopairs',
