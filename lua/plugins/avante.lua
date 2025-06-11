@@ -4,36 +4,39 @@ return {
   event = 'VeryLazy',
   version = false, -- Never set this value to "*"! Never!
   opts = {
-    -- NOTE: For most providers you must also provide an API key as an env var
-    -- claude: ANTHROPIC_API_KEY
-    -- openai: OPENAI_API_KEY
-    -- azure openai: AZURE_OPENAI_KEY
-    -- amazon bedrock: BEDROCK_KEYS
-    -- aihubmix: AIHUBMIX_API_KEY
-
-    -- provider = "ollama",
-    -- vendors = {
-    --   ollama = {
-    --     __inherited_from = "openai",
-    --     api_key_name = "",
-    --     endpoint = "http://127.0.0.1:11434/v1",
-    --     model = "deepseek-r1:8b",
-    --   },
-    -- },
-
-    -- provider = 'claude',
-    claude = {
-      model = 'claude-3-7-sonnet-latest',
-    },
-
     provider = 'openai',
-    openai = {
-      endpoint = 'https://api.openai.com/v1',
-      model = 'o4-mini', -- your desired model (or use gpt-4o, etc.)
-      timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
-      temperature = 0,
-      max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
-      reasoning_effort = 'medium', -- low|medium|high, only used for reasoning models
+    providers = {
+
+      -- NOTE: For most providers you must also provide an API key as an env var
+      -- claude: ANTHROPIC_API_KEY
+      -- openai: OPENAI_API_KEY
+      -- azure openai: AZURE_OPENAI_KEY
+      -- amazon bedrock: BEDROCK_KEYS
+      -- aihubmix: AIHUBMIX_API_KEY
+
+      -- provider = "ollama",
+      -- vendors = {
+      --   ollama = {
+      --     __inherited_from = "openai",
+      --     api_key_name = "",
+      --     endpoint = "http://127.0.0.1:11434/v1",
+      --     model = "deepseek-r1:8b",
+      --   },
+      -- },
+
+      -- provider = 'claude',
+      claude = {
+        model = 'claude-3-7-sonnet-latest',
+      },
+
+      openai = {
+        endpoint = 'https://api.openai.com/v1',
+        model = 'o4-mini', -- your desired model (or use gpt-4o, etc.)
+        timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
+        temperature = 0,
+        max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+        reasoning_effort = 'medium', -- low|medium|high, only used for reasoning models
+      },
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
