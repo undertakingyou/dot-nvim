@@ -4,7 +4,7 @@ return {
   event = 'VeryLazy',
   version = false, -- Never set this value to "*"! Never!
   opts = {
-    provider = 'openai',
+    provider = 'claude',
     providers = {
 
       -- NOTE: For most providers you must also provide an API key as an env var
@@ -26,16 +26,18 @@ return {
 
       -- provider = 'claude',
       claude = {
-        model = 'claude-3-7-sonnet-latest',
+        model = 'claude-sonnet-4-20250514',
       },
 
       openai = {
         endpoint = 'https://api.openai.com/v1',
         model = 'o4-mini', -- your desired model (or use gpt-4o, etc.)
         timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
-        temperature = 0,
-        max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
-        reasoning_effort = 'medium', -- low|medium|high, only used for reasoning models
+        extra_request_body = {
+          temperature = 0,
+          max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+          reasoning_effort = 'medium', -- low|medium|high, only used for reasoning models
+        },
       },
     },
   },

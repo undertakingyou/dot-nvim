@@ -273,6 +273,7 @@ else
     require 'plugins.nvim-lspconfig', -- Main LSP Configuration
     require 'plugins.confirm', -- Autoformat
     require 'plugins.blink', -- Autocompletion
+    require 'plugins.lsp_signature', -- Better show of signature
 
     -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
