@@ -295,6 +295,7 @@ else
     { 'windwp/nvim-ts-autotag', opts = {} }, -- Multiple languages close tags
     require 'plugins.avante', -- AI completions
     require 'plugins.markdown', -- Markdown pretty rendering
+    require 'plugins.mcphub', -- MCP Server support
 
     -- The following plugins come from the kickstarter project
     require 'kickstart.plugins.debug',
