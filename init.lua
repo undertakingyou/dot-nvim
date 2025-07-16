@@ -293,9 +293,10 @@ else
     -- Other code specific plugins
     require 'plugins.typescript-tools', -- Typescript
     { 'windwp/nvim-ts-autotag', opts = {} }, -- Multiple languages close tags
-    require 'plugins.avante', -- AI completions
     require 'plugins.markdown', -- Markdown pretty rendering
-    require 'plugins.mcphub', -- MCP Server support
+    require 'plugins.claudecode', -- Claude Code IDE integration
+    -- require 'plugins.avante', -- AI completions
+    -- require 'plugins.mcphub', -- MCP Server support
 
     -- The following plugins come from the kickstarter project
     require 'kickstart.plugins.debug',
