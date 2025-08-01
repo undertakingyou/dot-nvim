@@ -288,6 +288,7 @@ else
 
     -- Git specific plugins
     'tpope/vim-fugitive',
+    'sindrets/diffview.nvim', -- Better diff tool, config can be updated in the plugins folder and then this replaced
     require 'plugins.gitsigns', -- Adds git related signs to the gutter, as well as utilities for managing changes
 
     -- Other code specific plugins
