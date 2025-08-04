@@ -5,8 +5,8 @@ return {
   version = false, -- Never set this value to "*"! Never!
   opts = {
     provider = 'claude',
+    memory_summary_provider = 'ollama',
     providers = {
-
       -- NOTE: For most providers you must also provide an API key as an env var
       -- claude: ANTHROPIC_API_KEY
       -- openai: OPENAI_API_KEY
@@ -15,20 +15,31 @@ return {
       -- aihubmix: AIHUBMIX_API_KEY
 
       -- provider = "ollama",
-      -- vendors = {
-      --   ollama = {
-      --     __inherited_from = "openai",
-      --     api_key_name = "",
-      --     endpoint = "http://127.0.0.1:11434/v1",
-      --     model = "deepseek-r1:8b",
-      --   },
-      -- },
+      ollama = {
+        endpoint = 'http://192.168.1.148:11434',
+        model = 'llama3.2',
+        timeout = 30000,
+        extra_request_body = {
+          options = {
+            temperature = 0.75,
+            num_ctx = 20480,
+            keep_alive = '5m',
+          },
+        },
+      },
 
       -- provider = 'claude',
       claude = {
+        endpoint = 'https://api.anthropic.com',
         model = 'claude-sonnet-4-20250514',
+        timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
+        extra_request_body = {
+          temperature = 0,
+          max_tokens = 20480,
+        },
       },
 
+      -- provider = 'openai'
       openai = {
         endpoint = 'https://api.openai.com/v1',
         model = 'o4-mini', -- your desired model (or use gpt-4o, etc.)
