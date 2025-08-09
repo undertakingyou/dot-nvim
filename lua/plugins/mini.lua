@@ -35,7 +35,7 @@ return {
     -- end
 
     -- I like auto pairs
-    require('mini.pairs').setup()
+    -- require('mini.pairs').setup()
 
     -- Interesting split and joins for functions
     require('mini.splitjoin').setup()
