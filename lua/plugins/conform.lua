@@ -34,6 +34,12 @@ return {
       timeout_ms = 500,
       lsp_format = 'fallback',
     },
+    formatters = {
+      sqlfluff = {
+        command = 'sqlfluff',
+        args = { 'format', '--dialect', 'postgres', '--disable-progress-bar', '-n', '-' },
+      },
+    },
     formatters_by_ft = {
       lua = { 'stylua' },
       -- Conform can also run multiple formatters sequentially
@@ -55,6 +61,7 @@ return {
       graphql = { 'prettierd', 'prettier', stop_after_first = true },
       handlebars = { 'prettierd', 'prettier', stop_after_first = true },
       yaml = { 'prettierd', 'prettier', stop_after_first = true },
+      sql = { 'sqlfluff' },
     },
   },
 }
