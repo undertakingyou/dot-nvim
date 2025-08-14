@@ -50,6 +50,11 @@ return {
       { '<leader>w', group = '[W]orkspace' },
       { '<leader>t', group = '[T]oggle' },
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+      { '<leader>i', group = '[I]ncremental Selection' },
+      { '<leader>is', desc = 'Start Selection' },
+      { '<leader>ii', desc = 'Expand Node' },
+      { '<leader>ic', desc = 'Expand Scope' },
+      { '<leader>id', desc = 'Shrink Selection' },
       -- Text objects
       { 'a', group = 'Around', mode = { 'o', 'x' } },
       { 'i', group = 'Inside', mode = { 'o', 'x' } },
