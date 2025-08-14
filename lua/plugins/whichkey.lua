@@ -50,6 +50,9 @@ return {
       { '<leader>w', group = '[W]orkspace' },
       { '<leader>t', group = '[T]oggle' },
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+      -- Text objects
+      { 'a', group = 'Around', mode = { 'o', 'x' } },
+      { 'i', group = 'Inside', mode = { 'o', 'x' } },
     },
   },
 }
