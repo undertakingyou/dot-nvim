@@ -1,5 +1,21 @@
 -- Autoformat
 
+local function get_python_formatters()
+  local cwd = vim.fn.getcwd()
+  local pyproject_path = cwd .. '/pyproject.toml'
+
+  if vim.fn.filereadable(pyproject_path) == 1 then
+    local content = vim.fn.readfile(pyproject_path)
+    local text = table.concat(content, '\n')
+
+    if text:match '%[tool%.black%]' or text:match '%[tool%.isort%]' then
+      return { 'black', 'isort' }
+    end
+  end
+
+  return { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' }
+end
+
 return {
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
@@ -31,15 +47,19 @@ return {
     --   end
     -- end,
     format_on_save = {
-      timeout_ms = 500,
+      timeout_ms = 5000,
       lsp_format = 'fallback',
     },
+    formatters = {
+      sqlfluff = {
+        command = 'sqlfluff',
+        args = { 'format', '--dialect', 'postgres', '--disable-progress-bar', '-n', '-' },
+      },
+    },
     formatters_by_ft = {
-      lua = { 'stylua' },
-      -- Conform can also run multiple formatters sequentially
-      -- python = { "isort", "black" },
-      --
       -- You can use 'stop_after_first' to run the first available formatter from the list
+      lua = { 'stylua' },
+      python = get_python_formatters(),
       javascript = { 'prettierd', 'prettier', stop_after_first = true },
       typescript = { 'prettierd', 'prettier', stop_after_first = true },
       javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
@@ -55,6 +75,7 @@ return {
       graphql = { 'prettierd', 'prettier', stop_after_first = true },
       handlebars = { 'prettierd', 'prettier', stop_after_first = true },
       yaml = { 'prettierd', 'prettier', stop_after_first = true },
+      sql = { 'sqlfluff' },
     },
   },
 }
