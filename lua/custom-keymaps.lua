@@ -68,6 +68,8 @@ vim.keymap.set('n', '<leader>wC9', ':9wincmd w<cr>', { desc = 'Quick [c]lose [w]
 
 -- Delete buffer but keep window open. Good for buffer list cleanup and keeping things lean
 vim.keymap.set('n', '<leader>bd', '<cmd>bprevious <bar> bdelete # <cr>', { desc = 'Truly close the current buffer', silent = true })
+vim.keymap.set('n', '<leader>ba', '<cmd>%bd<cr>', { desc = 'Close all buffers', silent = true })
+vim.keymap.set('n', '<leader>bo', '<cmd>%bd <bar> e# <bar> bd#<cr>', { desc = 'Close all buffers but current', silent = true })
 
 -- File navigation
 vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
