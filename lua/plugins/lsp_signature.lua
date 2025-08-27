@@ -3,5 +3,8 @@
 return {
   'ray-x/lsp_signature.nvim',
   event = 'InsertEnter',
-  opts = {},
+  opts = {
+    -- Disable the floating window. This nerfs this plugin a lot, but the floating window can be super annoying
+    floating_window = false,
+  },
 }
