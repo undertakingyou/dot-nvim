@@ -74,3 +74,16 @@ vim.keymap.set('n', '<leader>bo', '<cmd>%bd <bar> e# <bar> bd#<cr>', { desc = 'C
 
 -- File navigation
 vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+
+-- Toggle between relative and regular line numbers
+local function toggle_line_numbers()
+  if vim.wo.relativenumber then
+    vim.wo.relativenumber = false
+    vim.wo.number = true
+  else
+    vim.wo.relativenumber = true
+    vim.wo.number = true
+  end
+end
+
+vim.keymap.set('n', '<leader>tr', toggle_line_numbers, { desc = 'Toggle relative line numbers' })
