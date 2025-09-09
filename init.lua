@@ -120,6 +120,9 @@ else
   -- See `:help 'confirm'`
   vim.opt.confirm = true
 
+  -- I want all windows to have a border by default
+  vim.opt.winborder = 'rounded'
+
   -- [[ Basic Keymaps ]]
   require 'custom-keymaps'
 

@@ -7,7 +7,8 @@
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>qo', vim.diagnostic.setloclist, { desc = 'Open diagnostic quickfix list' })
+vim.keymap.set('n', '<leader>qc', '<cmd>lclose<CR>', { desc = 'Close diagnostic quickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -68,6 +69,21 @@ vim.keymap.set('n', '<leader>wC9', ':9wincmd w<cr>', { desc = 'Quick [c]lose [w]
 
 -- Delete buffer but keep window open. Good for buffer list cleanup and keeping things lean
 vim.keymap.set('n', '<leader>bd', '<cmd>bprevious <bar> bdelete # <cr>', { desc = 'Truly close the current buffer', silent = true })
+vim.keymap.set('n', '<leader>ba', '<cmd>%bd<cr>', { desc = 'Close all buffers', silent = true })
+vim.keymap.set('n', '<leader>bo', '<cmd>%bd <bar> e# <bar> bd#<cr>', { desc = 'Close all buffers but current', silent = true })
 
 -- File navigation
 vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+
+-- Toggle between relative and regular line numbers
+local function toggle_line_numbers()
+  if vim.wo.relativenumber then
+    vim.wo.relativenumber = false
+    vim.wo.number = true
+  else
+    vim.wo.relativenumber = true
+    vim.wo.number = true
+  end
+end
+
+vim.keymap.set('n', '<leader>tr', toggle_line_numbers, { desc = 'Toggle relative line numbers' })
