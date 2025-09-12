@@ -112,25 +112,7 @@ return {
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
-    dapui.setup {
-      -- Set icons to characters that are more likely to work in every terminal.
-      --    Feel free to remove or use ones that you like more! :)
-      --    Don't feel like these are good choices.
-      icons = { expanded = '', collapsed = '', current_frame = '*' },
-      controls = {
-        icons = {
-          pause = '',
-          play = '',
-          step_into = '',
-          step_over = '',
-          step_out = '',
-          step_back = '',
-          run_last = '',
-          terminate = '',
-          disconnect = '',
-        },
-      },
-    }
+    dapui.setup()
 
     -- Change breakpoint icons
     vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
@@ -148,7 +130,9 @@ return {
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
-    -- Install golang specific config
+    -- ╭──────────────────────────────────────────────────────────╮
+    -- │ GoLang                                                   │
+    -- ╰──────────────────────────────────────────────────────────╯
     require('dap-go').setup {
       delve = {
         -- On Windows delve must be run attached or it crashes.
@@ -157,7 +141,33 @@ return {
       },
     }
 
-    require('dap-python').setup 'python3'
+    -- ╭──────────────────────────────────────────────────────────╮
+    -- │ Python                                                   │
+    -- ╰──────────────────────────────────────────────────────────╯
+    local dappy = require 'dap-python'
+    -- use the python associated through the python debugger
+    dappy.setup '~/.config/local/share/nvim/mason/packages/debugpy/venv/bin/python'
+
+    -- Add Python test configurations to DAP
+    dap.configurations.python = dap.configurations.python or {}
+    table.insert(dap.configurations.python, {
+      type = 'python',
+      request = 'launch',
+      name = 'Debug: Method',
+      program = function()
+        return dappy.test_method { config = { justMyCode = false } }
+      end,
+      console = 'integratedTerminal',
+    })
+    table.insert(dap.configurations.python, {
+      type = 'python',
+      request = 'launch',
+      name = 'Debug: Class',
+      program = function()
+        return dappy.test_class { config = { justMyCode = false } }
+      end,
+      console = 'integratedTerminal',
+    })
 
     -- ╭──────────────────────────────────────────────────────────╮
     -- │ Adapters                                                 │
