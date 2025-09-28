@@ -41,7 +41,7 @@ return {
     require('mini.splitjoin').setup()
 
     -- Nicer starter window
-    require('mini.starter').setup()
+    -- require('mini.starter').setup()
 
     -- ... and there is more!
     --  Check out: https://github.com/echasnovski/mini.nvim
