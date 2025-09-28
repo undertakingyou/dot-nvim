@@ -76,6 +76,7 @@ return {
       handlebars = { 'prettierd', 'prettier', stop_after_first = true },
       yaml = { 'prettierd', 'prettier', stop_after_first = true },
       sql = { 'sqlfluff' },
+      go = { 'gofmt', 'goimports' },
     },
   },
 }
