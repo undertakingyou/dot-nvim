@@ -9,9 +9,15 @@ return { -- You can easily change to a different colorscheme.
   config = function()
     ---@diagnostic disable-next-line: missing-fields
     require('tokyonight').setup {
+      transparent = true,
       styles = {
         comments = { italic = false }, -- Disable italics in comments
+        sidebars = 'transparent',
+        floats = 'transparent',
       },
+      on_colors = function(colors)
+        colors.border = colors.fg_gutter
+      end,
     }
 
     -- Load the colorscheme here.
