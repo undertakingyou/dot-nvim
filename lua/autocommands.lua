@@ -12,3 +12,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+-- Automatically turn on csv view
+-- Requires the csvview.nvim plugin to be installed
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'csv',
+  desc = 'Enable CSV View on .csv files',
+  callback = function()
+    require('csvview').enable()
+  end,
+})
