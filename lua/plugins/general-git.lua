@@ -8,6 +8,19 @@ return {
     },
   },
   {
+    -- TODO: Update this to use this git blame instead of something vim-fugitive
+    'lewis6991/gitsigns.nvim',
+    opts = {
+      signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+      },
+    },
+  },
+  {
     'sindrets/diffview.nvim',
     cmd = { 'DiffviewOpen', 'DiffviewClose', 'DiffviewToggleFiles', 'DiffviewFileHistory', 'DiffviewRefresh', 'DiffviewFocusFiles' },
     config = function()
