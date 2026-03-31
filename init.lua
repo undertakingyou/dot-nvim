@@ -36,6 +36,8 @@ if vim.g.vscode then
   --- Do my thing here
   require 'nvim-vscode.keymap'
 else
+  -- Enable 0.12.0 ui2
+  -- require('vim._core.ui2').enable{}
   -- Ordinary vim
 
   -- Set <space> as the leader key
