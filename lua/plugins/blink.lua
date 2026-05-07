@@ -5,6 +5,7 @@ return {
   event = 'VimEnter',
   dependencies = {
     -- Snippet Engine
+    { 'saghen/blink.lib' },
     {
       'L3MON4D3/LuaSnip',
       version = '2.*',
