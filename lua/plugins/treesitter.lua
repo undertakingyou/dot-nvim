@@ -67,20 +67,20 @@ return {
     config = function()
       -- keymaps
       -- You can use the capture groups defined in `textobjects.scm`
-      vim.keymap.set({ 'x', 'o' }, 'af', function()
+      vim.keymap.set({ 'v', 'o' }, 'af', function()
         require('nvim-treesitter-textobjects.select').select_textobject('@function.outer', 'textobjects')
       end, { desc = 'Around next function' })
-      vim.keymap.set({ 'x', 'o' }, 'if', function()
+      vim.keymap.set({ 'v', 'o' }, 'if', function()
         require('nvim-treesitter-textobjects.select').select_textobject('@function.inner', 'textobjects')
       end, { desc = 'Inside next function' })
-      vim.keymap.set({ 'x', 'o' }, 'ac', function()
+      vim.keymap.set({ 'v', 'o' }, 'ac', function()
         require('nvim-treesitter-textobjects.select').select_textobject('@class.outer', 'textobjects')
       end, { desc = 'Around next class' })
-      vim.keymap.set({ 'x', 'o' }, 'ic', function()
+      vim.keymap.set({ 'v', 'o' }, 'ic', function()
         require('nvim-treesitter-textobjects.select').select_textobject('@class.inner', 'textobjects')
       end, { desc = 'Inside next class' })
       -- You can also use captures from other query groups like `locals.scm`
-      vim.keymap.set({ 'x', 'o' }, 'as', function()
+      vim.keymap.set({ 'v', 'o' }, 'as', function()
         require('nvim-treesitter-textobjects.select').select_textobject('@local.scope', 'locals')
       end, { desc = 'Around next scope' })
     end,
