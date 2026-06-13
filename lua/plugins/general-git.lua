@@ -2,13 +2,6 @@
 
 return {
   {
-    'tpope/vim-fugitive',
-    keys = {
-      { '<leader>gb', '<cmd>Git blame<cr>', desc = '[G]it [b]lame' },
-    },
-  },
-  {
-    -- TODO: Update this to use this git blame instead of something vim-fugitive
     'lewis6991/gitsigns.nvim',
     opts = {
       signs = {
@@ -18,6 +11,9 @@ return {
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
+    },
+    keys = {
+      { '<leader>gb', '<cmd>Gitsigns blame<cr>', desc = '[G]it [b]lame' },
     },
   },
   {
@@ -104,7 +100,7 @@ return {
       { '<leader>gdt', '<cmd>DiffviewToggleFiles<cr>', desc = '[G]it [d]iff [t]oggle files' },
       { '<leader>gdf', '<cmd>DiffviewFocusFiles<cr>', desc = '[G]it [d]iff [f]ocus files' },
       { '<leader>gdr', '<cmd>DiffviewRefresh<cr>', desc = '[G]it [d]iff [r]efresh' },
-      { '<leader>gdm', '<cmd>DiffviewOpen origin/master...HEAD<cr>', desc = '[G]it [d]iff vs [m]aster' },
+      { '<leader>gdm', '<cmd>DiffviewOpen origin/main...HEAD<cr>', desc = '[G]it [d]iff vs [m]aster' },
     },
   },
 }

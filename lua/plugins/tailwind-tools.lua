@@ -4,7 +4,7 @@ return {
   name = 'tailwind-tools',
   build = ':UpdateRemotePlugins',
   dependencies = {
-    'nvim-treesitter/nvim-treesitter',
+    'arborist-ts/arborist.nvim',
     'nvim-telescope/telescope.nvim', -- optional
     'neovim/nvim-lspconfig', -- optional
   },
