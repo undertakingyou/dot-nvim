@@ -19,35 +19,43 @@ return {
   --     }
   --   end,
   -- },
+  -- {
+  --   'nvim-treesitter/nvim-treesitter',
+  --   branch = 'main',
+  --   build = ':TSUpdate',
+  --   main = 'nvim-treesitter.config', -- Sets main module to use for opts
+  --   -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+  --   opts = {
+  --     ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+  --     -- Autoinstall languages that are not installed
+  --     auto_install = true,
+  --     highlight = {
+  --       enable = true,
+  --       -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+  --       --  If you are experiencing weird indenting issues, add the language to
+  --       --  the list of additional_vim_regex_highlighting and disabled languages for indent.
+  --       additional_vim_regex_highlighting = { 'ruby' },
+  --     },
+  --     indent = { enable = true, disable = { 'ruby' } },
+  --     -- Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
+  --     incremental_selection = {
+  --       enable = true,
+  --       keymaps = {
+  --         init_selection = '<leader>is',
+  --         node_incremental = '<leader>ii',
+  --         scope_incremental = '<leader>ic',
+  --         node_decremental = '<leader>id',
+  --       },
+  --     },
+  --   },
+  -- },
   {
-    'nvim-treesitter/nvim-treesitter',
-    branch = 'main',
-    build = ':TSUpdate',
-    main = 'nvim-treesitter.config', -- Sets main module to use for opts
-    -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-    opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
-      -- Autoinstall languages that are not installed
-      auto_install = true,
-      highlight = {
-        enable = true,
-        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-        --  If you are experiencing weird indenting issues, add the language to
-        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-        additional_vim_regex_highlighting = { 'ruby' },
-      },
-      indent = { enable = true, disable = { 'ruby' } },
-      -- Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = '<leader>is',
-          node_incremental = '<leader>ii',
-          scope_incremental = '<leader>ic',
-          node_decremental = '<leader>id',
-        },
-      },
-    },
+    'arborist-ts/arborist.nvim',
+    config = function()
+      require('arborist').setup {
+        ensure_installed = { 'bash', 'c', 'diff', 'html', 'latex', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'yaml' },
+      }
+    end,
   },
   -- Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   {
@@ -64,26 +72,7 @@ return {
       -- vim.g.no_rust_maps = true
       -- vim.g.no_go_maps = true
     end,
-    config = function()
-      -- keymaps
-      -- You can use the capture groups defined in `textobjects.scm`
-      vim.keymap.set({ 'v', 'o' }, 'af', function()
-        require('nvim-treesitter-textobjects.select').select_textobject('@function.outer', 'textobjects')
-      end, { desc = 'Around next function' })
-      vim.keymap.set({ 'v', 'o' }, 'if', function()
-        require('nvim-treesitter-textobjects.select').select_textobject('@function.inner', 'textobjects')
-      end, { desc = 'Inside next function' })
-      vim.keymap.set({ 'v', 'o' }, 'ac', function()
-        require('nvim-treesitter-textobjects.select').select_textobject('@class.outer', 'textobjects')
-      end, { desc = 'Around next class' })
-      vim.keymap.set({ 'v', 'o' }, 'ic', function()
-        require('nvim-treesitter-textobjects.select').select_textobject('@class.inner', 'textobjects')
-      end, { desc = 'Inside next class' })
-      -- You can also use captures from other query groups like `locals.scm`
-      vim.keymap.set({ 'v', 'o' }, 'as', function()
-        require('nvim-treesitter-textobjects.select').select_textobject('@local.scope', 'locals')
-      end, { desc = 'Around next scope' })
-    end,
+    config = function() end,
   },
   -- Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
   {
