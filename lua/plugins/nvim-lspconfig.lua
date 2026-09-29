@@ -232,6 +232,7 @@ return {
     -- Python Language Server
     vim.lsp.config('pyright', {
       capabilities = capabilities,
+      workspace_required = true,
     })
 
     -- ESLint Language Server
