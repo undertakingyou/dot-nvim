@@ -233,6 +233,12 @@ return {
     vim.lsp.config('pyright', {
       capabilities = capabilities,
       workspace_required = true,
+      -- Equal priority so the nearest project wins; otherwise a monorepo-root pyrightconfig.json
+      -- beats a subproject's pyproject.toml and pyright loses the subproject's venv.
+      root_markers = {
+        { 'pyrightconfig.json', 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile' },
+        '.git',
+      },
     })
 
     -- ESLint Language Server
